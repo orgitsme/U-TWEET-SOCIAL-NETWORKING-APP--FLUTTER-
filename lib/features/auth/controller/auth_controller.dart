@@ -1,4 +1,4 @@
-import 'package:appwrite/appwrite.dart' as model;
+import 'package:appwrite/models.dart' as model; // ✅ Fix: models import
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:u_tweet/apis/auth_api.dart';
@@ -37,13 +37,14 @@ final currentUserAccountProvider = FutureProvider((ref) {
 class AuthController extends StateNotifier<bool> {
   final AuthAPI _authAPI;
   final UserAPI _userAPI;
+
   AuthController({required AuthAPI authAPI, required UserAPI userAPI})
     : _authAPI = authAPI,
       _userAPI = userAPI,
       super(false);
-  // state = isLoading
 
-  Future<model.Account?> currentUser() => _authAPI.currentUserAccount();
+  // ✅ Fixed: Changed from model.Account? to model.User?
+  Future<model.User?> currentUser() => _authAPI.currentUserAccount();
 
   void signUp({
     required String email,
@@ -67,7 +68,7 @@ class AuthController extends StateNotifier<bool> {
       );
       final res2 = await _userAPI.saveUserData(userModel);
       res2.fold((l) => showSnackBar(context, l.message), (r) {
-        showSnackBar(context, 'Accounted created! Please login.');
+        showSnackBar(context, 'Account created! Please login.');
         Navigator.push(context, LoginView.route());
       });
     });
@@ -81,15 +82,15 @@ class AuthController extends StateNotifier<bool> {
     state = true;
     final res = await _authAPI.login(email: email, password: password);
     state = false;
-    res.fold((l) => showSnackBar(context, l.message), (r) {
-      Navigator.push(context, HomeView.route());
-    });
+    res.fold(
+      (l) => showSnackBar(context, l.message),
+      (r) => Navigator.push(context, HomeView.route()),
+    );
   }
 
   Future<UserModel> getUserData(String uid) async {
     final document = await _userAPI.getUserData(uid);
-    final updatedUser = UserModel.fromMap(document.data);
-    return updatedUser;
+    return UserModel.fromMap(document.data);
   }
 
   void logout(BuildContext context) async {
