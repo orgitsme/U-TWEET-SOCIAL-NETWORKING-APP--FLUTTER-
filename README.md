@@ -1,6 +1,13 @@
-# 🐦 U-Tweet - A Flutter Social Networking App
+<p align="center">
+  <img src="https://img.shields.io/badge/Flutter-1E88E5?style=for-the-badge&logo=flutter&logoColor=white" height="35"/>
+  <img src="https://img.shields.io/badge/Dart-00B4AB?style=for-the-badge&logo=dart&logoColor=white" height="35"/>
+</p>
+
+# U-Tweet - A Flutter Social Networking App
 
 A modern social media app built with Flutter, offering real-time features similar to Twitter.
+
+---
 
 ## 🚀 Getting Started
 
@@ -50,68 +57,47 @@ This project allows users to sign up, post tweets (text, images, or links), foll
 
 ## 📦 Tech Stack
 
-- Flutter
-- Firebase (Auth, Firestore, Storage)
-- Provider / Riverpod (State Management)
-- Appwrite (if applicable)
-- REST APIs (if any)
+### 🖥️ Backend
+- **Appwrite** (Self-hosted via Docker)
+  - Authentication
+  - Database
+  - Storage
+  - Realtime Subscriptions
+
+### 📱 Frontend
+- **Flutter** — Cross-platform mobile app framework
+- **Riverpod** — State management
 
 ---
+
 ## 🛠️ Installation
 
- 
 ### 📦 Appwrite Setup
 
 1. **Install Appwrite**  
-   👉 [Installation Steps Here](https://appwrite.io/docs/installation)
+   👉 [Installation Guide](https://appwrite.io/docs/installation)
 
 2. **Create a new Appwrite project locally**
 
 3. **Create Android & iOS apps in the Appwrite Dashboard**
 
-4. **Setup your backend**
-   - Create **Database**, **Storage**, and configure **Authentication**
-   - Modify roles in Auth, Database, and Storage tabs
-   - Create necessary **collections**:
+4. **Configure Backend**
+   - Set up **Database**, **Storage**, and **Authentication**
+   - Modify **roles** for Auth, Database, and Storage
+   - Create the following **collections**:
      - `tweets`
      - `users`
      - `notifications`
-   - Add relevant **attributes** (fields) to each collection
+   - Add required **attributes** to each collection
 
 5. **Update Project Constants**
-   - Copy all required IDs from Appwrite Console
-   - Paste them into `lib/constants/appwrite_constants.dart`
-   - Update your IP Address in the same file
+   - Copy necessary IDs from Appwrite Console
+   - Update values in `lib/constants/appwrite_constants.dart`
+   - Change your **IP address** in the same file
 
 ### ▶️ Run the App
 
 ```bash
 flutter pub get
-open -a simulator        # For iOS
+open -a simulator        # Launch iOS simulator
 flutter run
-🧰 Tech Stack
-🖥️ Server
-Appwrite Authentication
-
-Appwrite Database
-
-Appwrite Storage
-
-Appwrite Realtime
-
-📱 Client
-Flutter
-
-Riverpod (State Management)
-
-![1_D0ovkfSAN6BQ5md-miqbBQ](https://github.com/user-attachments/assets/223f4718-2f50-4291-b22c-c8c53c27acb0)
-
-
- 
-
----
-
-## 📄 License
-Copyright (c) 2025 U-Tweets
-All rights reserved.
- 
