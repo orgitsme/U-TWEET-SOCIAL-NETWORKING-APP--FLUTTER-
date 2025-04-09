@@ -1,4 +1,4 @@
-# 🐦 U-Tweets - A Flutter Socail Networking App
+# 🐦 U-Tweets - A Flutter Social Networking App
 
 A modern social media app built with Flutter, offering real-time features similar to Twitter.
 
